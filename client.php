@@ -24,13 +24,14 @@ $collection = new ImmutableCollection($traversable);
 $collection = $collection->addItem($item4);
 $collection = $collection->deleteItem(1);
 print '<pre>';
-var_dump($collection->compare(0,2)); // true
+var_dump($collection->compare(0,2)); // false
 var_dump($collection->compare(1,2)); // false
 
 $filteredCollection = $collection->filter(new CollectionFilter(20, 'test'));
 print 'Filtered Collection ';
 print_r($filteredCollection->toArray());
 
+$collection = new ImmutableCollection($traversable);
 $newCollection = new ImmutableCollection($traversable);
 $result = $newCollection->merge($collection);
 print 'Merged Collection ';

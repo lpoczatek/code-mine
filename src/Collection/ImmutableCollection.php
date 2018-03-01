@@ -31,7 +31,7 @@ class ImmutableCollection implements ImmutableCollectionInterface
         /** @var ItemInterface $element2 */
         $element2 = $this->elements->offsetGet($offset2);
 
-        return $element1->getPrice() === $element2->getPrice() && $element1->getName() === $element2->getName();
+        return $element1 === $element2;
     }
 
     public function addItem(ItemInterface $item): ImmutableCollectionInterface
@@ -74,7 +74,7 @@ class ImmutableCollection implements ImmutableCollectionInterface
     public function merge(ImmutableCollectionInterface $immutableCollection): ImmutableCollectionInterface
     {
         $initialCollection = clone $this->elements;
-        $merged = array_unique(array_merge($initialCollection->toArray(), $immutableCollection->toArray()));
+        $merged = array_unique(array_merge($initialCollection->toArray(), $immutableCollection->toArray()), SORT_REGULAR);
 
         return new static(SplFixedArray::fromArray(array_values($merged)));
     }
