@@ -84,7 +84,7 @@ class ImmutableCollection implements ImmutableCollectionInterface
         $initialCollection = clone $this->elements;
         $merged = array_intersect($initialCollection->toArray(), $immutableCollection->toArray());
 
-        return new static(SplFixedArray::fromArray($merged));
+        return new static(SplFixedArray::fromArray(array_values($merged)));
     }
 
     public function diff(ImmutableCollectionInterface $immutableCollection): ImmutableCollectionInterface
@@ -92,7 +92,7 @@ class ImmutableCollection implements ImmutableCollectionInterface
         $initialCollection = clone $this->elements;
         $merged = array_diff($initialCollection->toArray(), $immutableCollection->toArray());
 
-        return new static(SplFixedArray::fromArray($merged));
+        return new static(SplFixedArray::fromArray(array_values($merged)));
     }
 
     public function toArray(): array
