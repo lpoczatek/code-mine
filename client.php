@@ -47,3 +47,15 @@ $newCollection = new ImmutableCollection($traversable);
 $result = $newCollection->diff($collection);
 print 'Differentiated  Collection ';
 print_r($result->toArray());
+
+print "\nSorted by price\n";
+$newCollection = $collection->sortByPrice();
+foreach ($newCollection as $item) {
+    print get_class($item).': '.$item->getPrice()."\n";
+}
+
+print "\nSorted by name\n";
+$newCollection = $collection->sortByName();
+foreach ($newCollection as $item) {
+    print get_class($item).': '.$item->getName()."\n";
+}

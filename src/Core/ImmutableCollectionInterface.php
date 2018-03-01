@@ -2,6 +2,7 @@
 
 namespace CodeMine\Core;
 
+use CodeMine\Collection\ImmutableCollection;
 use Countable;
 use Iterator;
 
@@ -22,4 +23,8 @@ interface ImmutableCollectionInterface extends Iterator, Countable
     public function diff(ImmutableCollectionInterface $immutableCollection): ImmutableCollectionInterface;
 
     public function toArray(): array;
+
+    public function sortByPrice(): ImmutableCollectionInterface;
+
+    public function sortByName(): ImmutableCollectionInterface;
 }

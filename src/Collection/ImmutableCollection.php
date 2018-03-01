@@ -130,6 +130,30 @@ class ImmutableCollection implements ImmutableCollectionInterface
         $this->elements->rewind();
     }
 
+    public function sortByPrice(): ImmutableCollectionInterface
+    {
+        $immutable = clone $this->elements;
+        $array = $immutable->toArray();
+
+        usort($array, function ($a, $b) {
+            return $a->getPrice() <=> $b->getPrice();
+        });
+
+        return new static(SplFixedArray::fromArray($array));
+    }
+
+    public function sortByName(): ImmutableCollectionInterface
+    {
+        $immutable = clone $this->elements;
+        $array = $immutable->toArray();
+
+        usort($array, function ($a, $b) {
+            return $a->getName() <=> $b->getName();
+        });
+
+        return new static(SplFixedArray::fromArray($array));
+    }
+
     private function initCollection(SplFixedArray $immutable)
     {
         $this->checkCollection($immutable);

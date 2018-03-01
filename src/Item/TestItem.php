@@ -13,6 +13,6 @@ class TestItem extends AbstractItem
 
     public function getPrice(): int
     {
-        return 20;
+        return 22;
     }
 }

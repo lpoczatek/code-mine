@@ -8,7 +8,7 @@ class TestAnotherItem extends AbstractItem
 {
     public function getName(): string
     {
-        return 'test';
+        return 'another test another';
     }
 
     public function getPrice(): int
